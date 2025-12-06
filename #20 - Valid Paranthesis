@@ -1,0 +1,17 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        bracketpair = {"(":")","[":"]","{":"}"}
+        st = []
+        for i in s:
+            if i in "([{":
+                st.append(i)
+            else:
+                
+                if not st or bracketpair[st.pop()] != i:
+                    return False
+        
+        return not st
