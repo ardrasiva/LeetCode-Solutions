@@ -1,0 +1,23 @@
+class Solution(object):
+    def minProcessingTime(self, processorTime, tasks):
+        """
+        :type processorTime: List[int]
+        :type tasks: List[int]
+        :rtype: int
+        """
+        tasklen=len(tasks)
+        ptimelen = len(processorTime)
+        j=tasklen - 1
+        processorTime.sort()
+        tasks.sort()
+        finalans = 0
+
+        for i in range(ptimelen):
+            count = 0
+            while count < 4 and j >= 0:
+                finalans = max(finalans,processorTime[i]+tasks[j])
+                count = count + 1
+                j = j - 1
+        return finalans
+
+        
