@@ -1,0 +1,17 @@
+class Solution(object):
+    def minimumTotal(self, triangle):
+        """
+        :type triangle: List[List[int]]
+        :rtype: int
+        """
+        #solution is of dynamic programming bottom up approach
+        trlen = len(triangle) #find the length of the entire triangle
+        for i in range(trlen-2,-1,-1): #go to second last row till root node
+            rowlen = len(triangle[i])  #find the length of that particular row
+            for j in range(rowlen): #loop on the entire row (0 to length-1)
+                leftchild = triangle[i+1][j] #if i is 2, then left will be [3][0]
+                rightchild = triangle[i+1][j+1] #[3][1]
+
+                triangle[i][j] += min(leftchild,rightchild) #add min value from left or right
+        return triangle[0][0] #return root node of triangle
+        
