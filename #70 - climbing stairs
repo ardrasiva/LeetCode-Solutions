@@ -1,0 +1,15 @@
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n <= 1:
+            return 1 #base case of just 1 step
+        stepfloor = 1
+        stepone = 1
+        for i in range(2,n+1):
+            currentstep = stepfloor + stepone
+            stepfloor = stepone
+            stepone = currentstep
+        return currentstep
